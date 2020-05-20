@@ -1,0 +1,14 @@
+@import './vendors/bootstrap';
+@import "./vendors/font-awesome";
+
+@import './utils/variables';
+
+@import './base/base';
+
+@import './layout/header';
+@import './layout/footer';
+
+@import './pages/home';
+@import './pages/rayon';
+@import './pages/productInfos';
+@import './pages/panier';

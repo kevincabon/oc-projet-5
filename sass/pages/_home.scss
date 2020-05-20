@@ -1,0 +1,35 @@
+.orinoco-logo{
+    width: 200px;
+}
+.items-list{
+    text-align: center;
+    &__title{
+        margin: 2rem 0;
+    }
+    &__list{
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        li{
+            position: relative;
+            list-style-type: none;
+            margin: 1rem 0;
+
+            a{
+                img{
+                    border: 2px solid black;
+                    padding: 1rem;
+                    transition: all 200ms ease-in-out;
+                    width: 330px;
+                    &:hover{
+                        transform: scale(1.05);
+                        filter: drop-shadow(5px 5px 5px #222);
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    }
+}
