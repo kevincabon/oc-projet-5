@@ -1,31 +1,30 @@
-import { getData } from './getDb';
+import { getData } from './import/getDb';
 import { loadHeaderFooter } from './include/loadHeaderFooter';
 
 loadHeaderFooter();
+submitOrder();
 
-let cart = '';
 let html = '';
 let myproduct = [];
-if (!localStorage.orderList){
+
+if (!localStorage.orderList){ //Si le Panier est vide
     document.getElementsByClassName('panier')[0].innerHTML = "<span class='cart-empty'>Panier Vide</span>";
 
 }else{
-    cart = localStorage.orderList.split(",");
+    let cart = localStorage.orderList.split(",");
     document.getElementById('clear-cart').addEventListener('click', function(event){
         if (confirm("Vider le panier ?")){
             delete localStorage.orderList;
             location.reload();
         }
     });
+    calculSum();
+    for (let product of cart){
+        let ids = product.split("::");
+        myproduct.push(ids[1]);
+        let item = getData('http://localhost:3000/api/' + ids[0] + '/' + ids[1]).then(res => showOrder(res, ids[0], ids[1], ids[2]));
+    }
 }
-
-for (let product of cart){
-    let ids = product.split("::");
-    myproduct.push(ids[1]);
-    let item = getData('http://localhost:3000/api/' + ids[0] + '/' + ids[1]).then(res => showOrder(res, ids[0], ids[1], ids[2]));
-}
-
-calculSum();
 class Contact {
     constructor(firstName, lastName, email, address, city){
         this.firstName = firstName;
@@ -35,6 +34,22 @@ class Contact {
         this.email = email;
     }
 }
+function submitOrder(){
+    if (document.getElementById('order-form')){
+        document.getElementById('order-form').addEventListener('submit', function(event){
+            event.preventDefault();
+            let client1 = new Contact(document.getElementById('inputFirstName').value, 
+                                    document.getElementById('inputLastName').value,
+                                    document.getElementById('inputEmail').value, 
+                                    document.getElementById('inputAddress').value, 
+                                    document.getElementById('inputCity').value);
+            let productId = window.location.search.substr(4);
+            let valueToSend = {contact:client1, products:myproduct};
+            postOrder(valueToSend);
+        })
+    }
+}
+    
 
 function showOrder(orderList, cat, id, personnalisation){
     //console.log(orderList);
@@ -61,20 +76,6 @@ function calculSum(){
         console.log(myproduct);
         return prices;
     }, 600);
-}
-
-if (document.getElementById('submit-form')){
-    document.getElementById('submit-form').addEventListener('click', function(event){
-        event.preventDefault();
-        let client1 = new Contact(document.getElementById('inputFirstName').value, 
-                                document.getElementById('inputLastName').value,
-                                document.getElementById('inputEmail').value, 
-                                document.getElementById('inputAddress').value, 
-                                document.getElementById('inputCity').value);
-        let productId = window.location.search.substr(4);
-        let valueToSend = {contact:client1, products:myproduct};
-        postOrder(valueToSend);
-    })
 }
 
 function postOrder(value){

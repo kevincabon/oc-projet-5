@@ -1,5 +1,5 @@
-import { getData } from './getDb';
-import { getIds } from './getIds';
+import { getData } from './import/getDb';
+import { getIds } from './import/getIds';
 import { loadHeaderFooter } from './include/loadHeaderFooter';
 
 loadHeaderFooter();
@@ -28,7 +28,6 @@ console.log(localStorage.getItem('orderList'));
 
 let showProductInfos = (data) => {
     let container = document.getElementById('container');
-    //let html = "<h2>" + data.name + "</h2><img src='"+data.imageUrl+"' class='col-12'><p>" + data.description + "</p>";
     let personalisation = [];
     if (data.varnish){
         var personalisationData = data.varnish;

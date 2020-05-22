@@ -1,10 +1,11 @@
-import { getData } from './getDb';
+import { getData } from './import/getDb';
 import { loadHeaderFooter } from './include/loadHeaderFooter';
-import { getCategorie } from './getIds';
+import { getCategorie } from './import/getIds';
 
 loadHeaderFooter();
 
 let categorie = window.location.search.replace("?", "");
+getData('http://localhost:3000/api/' + categorie).then(res => productList(res));
 
 let productList = (products) => {
     let container = document.getElementById('list');
@@ -25,5 +26,3 @@ let productList = (products) => {
     }
     container.innerHTML = html;
 }
-
-getData('http://localhost:3000/api/' + categorie).then(res => productList(res));
