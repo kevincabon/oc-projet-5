@@ -1,3 +1,3 @@
-import { loadHeaderFooter } from './loadHeaderFooter';
+import { loadHeaderFooter } from './include/loadHeaderFooter';
 
 loadHeaderFooter();

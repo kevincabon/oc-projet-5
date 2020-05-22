@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/productList.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/categorie.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -97,15 +97,15 @@ eval("!function(t,e){ true?module.exports=e():undefined}(\"undefined\"!=typeof s
 
 /***/ }),
 
-/***/ "./src/cartCount.js":
+/***/ "./src/categorie.js":
 /*!**************************!*\
-  !*** ./src/cartCount.js ***!
+  !*** ./src/categorie.js ***!
   \**************************/
-/*! exports provided: cartCount */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"cartCount\", function() { return cartCount; });\nvar cartCount = function cartCount() {\n  if (localStorage.orderList) {\n    var number = localStorage.orderList.split(',');\n    document.getElementById('cart-number').innerText = number.length;\n    console.log(number.length);\n  }\n};\n\n\n\n//# sourceURL=webpack:///./src/cartCount.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _getDb__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getDb */ \"./src/getDb.js\");\n/* harmony import */ var _loadHeaderFooter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./loadHeaderFooter */ \"./src/loadHeaderFooter.js\");\n/* harmony import */ var _getIds__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getIds */ \"./src/getIds.js\");\nfunction _createForOfIteratorHelper(o) { if (typeof Symbol === \"undefined\" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError(\"Invalid attempt to iterate non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\"); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it[\"return\"] != null) it[\"return\"](); } finally { if (didErr) throw err; } } }; }\n\nfunction _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === \"string\") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === \"Object\" && o.constructor) n = o.constructor.name; if (n === \"Map\" || n === \"Set\") return Array.from(o); if (n === \"Arguments\" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }\n\nfunction _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }\n\n\n\n\nObject(_loadHeaderFooter__WEBPACK_IMPORTED_MODULE_1__[\"loadHeaderFooter\"])();\nvar categorie = window.location.search.replace(\"?\", \"\");\n\nvar productList = function productList(products) {\n  var container = document.getElementById('list');\n\n  if (document.getElementById('categorie-img')) {\n    document.getElementById('categorie-img').setAttribute('src', '/images/' + categorie + '.png');\n  } //console.log(products);\n\n\n  var html = '';\n\n  var _iterator = _createForOfIteratorHelper(products),\n      _step;\n\n  try {\n    for (_iterator.s(); !(_step = _iterator.n()).done;) {\n      var article = _step.value;\n      html += \"<figure>\" + \"<a href='product.html?id=\" + article._id + \"&cat=\" + categorie + \"'>\" + \"<img src='\" + article.imageUrl + \"''>\" + \"<figcaption>\" + article.name + \"</figcaption>\" + \"</a>\" + \"</figure>\";\n    }\n  } catch (err) {\n    _iterator.e(err);\n  } finally {\n    _iterator.f();\n  }\n\n  container.innerHTML = html;\n};\n\nObject(_getDb__WEBPACK_IMPORTED_MODULE_0__[\"getData\"])('http://localhost:3000/api/' + categorie).then(function (res) {\n  return productList(res);\n});\n\n//# sourceURL=webpack:///./src/categorie.js?");
 
 /***/ }),
 
@@ -133,15 +133,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
-/***/ "./src/productList.js":
-/*!****************************!*\
-  !*** ./src/productList.js ***!
-  \****************************/
-/*! no exports provided */
+/***/ "./src/loadHeaderFooter.js":
+/*!*********************************!*\
+  !*** ./src/loadHeaderFooter.js ***!
+  \*********************************/
+/*! exports provided: loadHeaderFooter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _getDb__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getDb */ \"./src/getDb.js\");\n/* harmony import */ var _cartCount__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cartCount */ \"./src/cartCount.js\");\n/* harmony import */ var _getIds__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getIds */ \"./src/getIds.js\");\nfunction _createForOfIteratorHelper(o) { if (typeof Symbol === \"undefined\" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError(\"Invalid attempt to iterate non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\"); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it[\"return\"] != null) it[\"return\"](); } finally { if (didErr) throw err; } } }; }\n\nfunction _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === \"string\") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === \"Object\" && o.constructor) n = o.constructor.name; if (n === \"Map\" || n === \"Set\") return Array.from(o); if (n === \"Arguments\" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }\n\nfunction _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }\n\n\n\n\nvar categorie = window.location.search.replace(\"?\", \"\");\n\nvar productList = function productList(products) {\n  var container = document.getElementById('list');\n\n  if (document.getElementById('categorie-img')) {\n    document.getElementById('categorie-img').setAttribute('src', '/images/' + categorie + '.png');\n  } //console.log(products);\n\n\n  var html = '';\n\n  var _iterator = _createForOfIteratorHelper(products),\n      _step;\n\n  try {\n    for (_iterator.s(); !(_step = _iterator.n()).done;) {\n      var article = _step.value;\n      html += \"<figure>\" + \"<a href='product.html?id=\" + article._id + \"&cat=\" + categorie + \"'>\" + \"<img src='\" + article.imageUrl + \"''>\" + \"<figcaption>\" + article.name + \"</figcaption>\" + \"</a>\" + \"</figure>\";\n    }\n  } catch (err) {\n    _iterator.e(err);\n  } finally {\n    _iterator.f();\n  }\n\n  container.innerHTML = html;\n};\n\nObject(_cartCount__WEBPACK_IMPORTED_MODULE_1__[\"cartCount\"])();\nObject(_getDb__WEBPACK_IMPORTED_MODULE_0__[\"getData\"])('http://localhost:3000/api/' + categorie).then(function (res) {\n  return productList(res);\n});\n\n//# sourceURL=webpack:///./src/productList.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"loadHeaderFooter\", function() { return loadHeaderFooter; });\nvar cartCount = function cartCount() {\n  if (localStorage.orderList) {\n    var number = localStorage.orderList.split(',');\n    document.getElementById('cart-number').innerText = number.length;\n    console.log(number.length);\n  }\n};\n\nvar loadHeaderFooter = function loadHeaderFooter() {\n  $('header').load('/pages/header.html');\n  $('footer').load('/pages/footer.html');\n  setTimeout(function () {\n    cartCount();\n  }, 150);\n};\n\n\n\n//# sourceURL=webpack:///./src/loadHeaderFooter.js?");
 
 /***/ })
 

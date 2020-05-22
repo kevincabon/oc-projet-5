@@ -8,7 +8,7 @@ module.exports = {
     produit: "./src/product.js",
     order: "./src/order.js",
     order_recap: "./src/order-recap.js",
-    categorie: "./src/productList.js"
+    categorie: "./src/categorie.js"
   },
   output: {
     filename: "[name].bundle.js",

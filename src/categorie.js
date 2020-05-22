@@ -1,5 +1,5 @@
 import { getData } from './getDb';
-import { loadHeaderFooter } from './loadHeaderFooter';
+import { loadHeaderFooter } from './include/loadHeaderFooter';
 import { getCategorie } from './getIds';
 
 loadHeaderFooter();

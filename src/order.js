@@ -1,6 +1,5 @@
 import { getData } from './getDb';
-import { loadHeaderFooter } from './loadHeaderFooter';
-import { Contact } from './contact';
+import { loadHeaderFooter } from './include/loadHeaderFooter';
 
 loadHeaderFooter();
 
@@ -20,11 +19,21 @@ if (!localStorage.orderList){
     });
 }
 
-//console.log(cart);
 for (let product of cart){
     let ids = product.split("::");
     myproduct.push(ids[1]);
     let item = getData('http://localhost:3000/api/' + ids[0] + '/' + ids[1]).then(res => showOrder(res, ids[0], ids[1], ids[2]));
+}
+
+calculSum();
+class Contact {
+    constructor(firstName, lastName, email, address, city){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+        this.email = email;
+    }
 }
 
 function showOrder(orderList, cat, id, personnalisation){
@@ -54,9 +63,6 @@ function calculSum(){
     }, 600);
 }
 
-calculSum();
-
-
 if (document.getElementById('submit-form')){
     document.getElementById('submit-form').addEventListener('click', function(event){
         event.preventDefault();
@@ -67,11 +73,11 @@ if (document.getElementById('submit-form')){
                                 document.getElementById('inputCity').value);
         let productId = window.location.search.substr(4);
         let valueToSend = {contact:client1, products:myproduct};
-        testing(valueToSend);
+        postOrder(valueToSend);
     })
 }
 
-function testing(value){
+function postOrder(value){
     var request = new XMLHttpRequest();
     request.open("POST", "http://localhost:3000/api/teddies/order");
     request.setRequestHeader("Content-Type", "application/json");

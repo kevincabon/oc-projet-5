@@ -1,7 +1,6 @@
 import { getData } from './getDb';
-import { showProductInfos } from './productInfos';
 import { getIds } from './getIds';
-import { loadHeaderFooter } from './loadHeaderFooter';
+import { loadHeaderFooter } from './include/loadHeaderFooter';
 
 loadHeaderFooter();
 
@@ -24,3 +23,27 @@ document.getElementById('addToOrder').addEventListener('click', function(event){
     console.log(orderArray);
 })
 console.log(localStorage.getItem('orderList'));
+
+
+
+let showProductInfos = (data) => {
+    let container = document.getElementById('container');
+    //let html = "<h2>" + data.name + "</h2><img src='"+data.imageUrl+"' class='col-12'><p>" + data.description + "</p>";
+    let personalisation = [];
+    if (data.varnish){
+        var personalisationData = data.varnish;
+    }else if (data.colors){
+        var personalisationData = data.colors;
+    }else if (data.lenses){
+        var personalisationData = data.lenses;
+    }
+    for (let i in personalisationData){
+        personalisation += "<option>" + personalisationData[i] + "</option>";
+    }
+    let html =  "<h2>" + data.name + "</h2>" +
+                "<img src='"+data.imageUrl+"' class='col-12'>" +
+                "<p>" + data.description + "</p>" +
+                "Personnalisation : <select id='personalisation'>" + personalisation + "</select>";
+    container.innerHTML = html;
+    document.getElementById('price').innerHTML = data.price + " $";
+}

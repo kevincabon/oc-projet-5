@@ -97,18 +97,6 @@ eval("!function(t,e){ true?module.exports=e():undefined}(\"undefined\"!=typeof s
 
 /***/ }),
 
-/***/ "./src/cartCount.js":
-/*!**************************!*\
-  !*** ./src/cartCount.js ***!
-  \**************************/
-/*! exports provided: cartCount */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"cartCount\", function() { return cartCount; });\nvar cartCount = function cartCount() {\n  if (localStorage.orderList) {\n    var number = localStorage.orderList.split(',');\n    document.getElementById('cart-number').innerText = number.length;\n    console.log(number.length);\n  }\n};\n\n\n\n//# sourceURL=webpack:///./src/cartCount.js?");
-
-/***/ }),
-
 /***/ "./src/getDb.js":
 /*!**********************!*\
   !*** ./src/getDb.js ***!
@@ -133,6 +121,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
+/***/ "./src/loadHeaderFooter.js":
+/*!*********************************!*\
+  !*** ./src/loadHeaderFooter.js ***!
+  \*********************************/
+/*! exports provided: loadHeaderFooter */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"loadHeaderFooter\", function() { return loadHeaderFooter; });\nvar cartCount = function cartCount() {\n  if (localStorage.orderList) {\n    var number = localStorage.orderList.split(',');\n    document.getElementById('cart-number').innerText = number.length;\n    console.log(number.length);\n  }\n};\n\nvar loadHeaderFooter = function loadHeaderFooter() {\n  $('header').load('/pages/header.html');\n  $('footer').load('/pages/footer.html');\n  setTimeout(function () {\n    cartCount();\n  }, 150);\n};\n\n\n\n//# sourceURL=webpack:///./src/loadHeaderFooter.js?");
+
+/***/ }),
+
 /***/ "./src/product.js":
 /*!************************!*\
   !*** ./src/product.js ***!
@@ -141,19 +141,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _getDb__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getDb */ \"./src/getDb.js\");\n/* harmony import */ var _productInfos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./productInfos */ \"./src/productInfos.js\");\n/* harmony import */ var _getIds__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getIds */ \"./src/getIds.js\");\n/* harmony import */ var _cartCount__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./cartCount */ \"./src/cartCount.js\");\n\n\n\n\nvar ids = Object(_getIds__WEBPACK_IMPORTED_MODULE_2__[\"getIds\"])();\nvar orderArray = [];\nObject(_cartCount__WEBPACK_IMPORTED_MODULE_3__[\"cartCount\"])();\nObject(_getDb__WEBPACK_IMPORTED_MODULE_0__[\"getData\"])('http://localhost:3000/api/' + ids.categorie + '/' + ids.product_id).then(function (res) {\n  return Object(_productInfos__WEBPACK_IMPORTED_MODULE_1__[\"showProductInfos\"])(res);\n}); //console.log(ids.pr<oduct_id)\n//delete localStorage.orderList;\n\ndocument.getElementById('addToOrder').addEventListener('click', function (event) {\n  //event.preventDefault();\n  if (localStorage.getItem('orderList')) {\n    orderArray = localStorage.getItem('orderList').split(',');\n  }\n\n  orderArray.push(ids.categorie + \"::\" + ids.product_id + \"::\" + document.getElementById('personalisation').value);\n  localStorage.setItem('orderList', orderArray);\n  console.log(localStorage.getItem('orderList'));\n  console.log(orderArray);\n});\nconsole.log(localStorage.getItem('orderList'));\n\n//# sourceURL=webpack:///./src/product.js?");
-
-/***/ }),
-
-/***/ "./src/productInfos.js":
-/*!*****************************!*\
-  !*** ./src/productInfos.js ***!
-  \*****************************/
-/*! exports provided: showProductInfos */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"showProductInfos\", function() { return showProductInfos; });\nvar showProductInfos = function showProductInfos(data) {\n  var container = document.getElementById('container'); //let html = \"<h2>\" + data.name + \"</h2><img src='\"+data.imageUrl+\"' class='col-12'><p>\" + data.description + \"</p>\";\n\n  var personalisation = [];\n\n  if (data.varnish) {\n    var personalisationData = data.varnish;\n  } else if (data.colors) {\n    var personalisationData = data.colors;\n  } else if (data.lenses) {\n    var personalisationData = data.lenses;\n  }\n\n  for (var i in personalisationData) {\n    personalisation += \"<option>\" + personalisationData[i] + \"</option>\";\n  }\n\n  var html = \"<h2>\" + data.name + \"</h2>\" + \"<img src='\" + data.imageUrl + \"' class='col-12'>\" + \"<p>\" + data.description + \"</p>\" + \"Personnalisation : <select id='personalisation'>\" + personalisation + \"</select>\";\n  container.innerHTML = html;\n  document.getElementById('price').innerHTML = data.price + \" $\";\n};\n\n\n\n//# sourceURL=webpack:///./src/productInfos.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _getDb__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getDb */ \"./src/getDb.js\");\n/* harmony import */ var _getIds__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getIds */ \"./src/getIds.js\");\n/* harmony import */ var _loadHeaderFooter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loadHeaderFooter */ \"./src/loadHeaderFooter.js\");\n\n\n\nObject(_loadHeaderFooter__WEBPACK_IMPORTED_MODULE_2__[\"loadHeaderFooter\"])();\nvar ids = Object(_getIds__WEBPACK_IMPORTED_MODULE_1__[\"getIds\"])();\nvar orderArray = [];\nObject(_getDb__WEBPACK_IMPORTED_MODULE_0__[\"getData\"])('http://localhost:3000/api/' + ids.categorie + '/' + ids.product_id).then(function (res) {\n  return showProductInfos(res);\n}); //console.log(ids.pr<oduct_id)\n//delete localStorage.orderList;\n\ndocument.getElementById('addToOrder').addEventListener('click', function (event) {\n  //event.preventDefault();\n  if (localStorage.getItem('orderList')) {\n    orderArray = localStorage.getItem('orderList').split(',');\n  }\n\n  orderArray.push(ids.categorie + \"::\" + ids.product_id + \"::\" + document.getElementById('personalisation').value);\n  localStorage.setItem('orderList', orderArray);\n  console.log(localStorage.getItem('orderList'));\n  console.log(orderArray);\n});\nconsole.log(localStorage.getItem('orderList'));\n\nvar showProductInfos = function showProductInfos(data) {\n  var container = document.getElementById('container'); //let html = \"<h2>\" + data.name + \"</h2><img src='\"+data.imageUrl+\"' class='col-12'><p>\" + data.description + \"</p>\";\n\n  var personalisation = [];\n\n  if (data.varnish) {\n    var personalisationData = data.varnish;\n  } else if (data.colors) {\n    var personalisationData = data.colors;\n  } else if (data.lenses) {\n    var personalisationData = data.lenses;\n  }\n\n  for (var i in personalisationData) {\n    personalisation += \"<option>\" + personalisationData[i] + \"</option>\";\n  }\n\n  var html = \"<h2>\" + data.name + \"</h2>\" + \"<img src='\" + data.imageUrl + \"' class='col-12'>\" + \"<p>\" + data.description + \"</p>\" + \"Personnalisation : <select id='personalisation'>\" + personalisation + \"</select>\";\n  container.innerHTML = html;\n  document.getElementById('price').innerHTML = data.price + \" $\";\n};\n\n//# sourceURL=webpack:///./src/product.js?");
 
 /***/ })
 

@@ -86,18 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/cartCount.js":
-/*!**************************!*\
-  !*** ./src/cartCount.js ***!
-  \**************************/
-/*! exports provided: cartCount */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"cartCount\", function() { return cartCount; });\nvar cartCount = function cartCount() {\n  if (localStorage.orderList) {\n    var number = localStorage.orderList.split(',');\n    document.getElementById('cart-number').innerText = number.length;\n    console.log(number.length);\n  }\n};\n\n\n\n//# sourceURL=webpack:///./src/cartCount.js?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -106,7 +94,19 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _cartCount__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cartCount */ \"./src/cartCount.js\");\n // import getData from './getDb';\n// import getCategorie from './getCategories';\n// import productList from './productList';\n// import displayData from './productInfos';\n// if (window.location.search){\n//     if (!getCategorie()){\n//         document.getElementsByTagName('article')[0].innerHTML = \"<h3 class='text-center mt-5'>Erreur, page introuvable<h3>\";\n//         //throw new Error('Page Introuvable');\n//     }\n//     if (getCategorie()[0][0] === \"categorie\"){\n//         getData('http://localhost:3000/api/' + getCategorie()[0][1]).then(res => productList(res));\n//     }else if (getCategorie()[0][0] === \"id\" && getCategorie()[1][0] === \"cat\"){\n//         getData('http://localhost:3000/api/' + getCategorie()[1][1] + '/' + getCategorie()[0][1]).then(res => displayData(res));\n//     }else{\n//     }\n// }\n// if (document.getElementById('addToOrder')){\n//     document.getElementById('addToOrder').setAttribute('href', 'order.html?id=' + getCategorie()[0][1]);\n// }\n// localStorage.setItem('test', 1);\n\nObject(_cartCount__WEBPACK_IMPORTED_MODULE_0__[\"cartCount\"])();\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _loadHeaderFooter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loadHeaderFooter */ \"./src/loadHeaderFooter.js\");\n\nObject(_loadHeaderFooter__WEBPACK_IMPORTED_MODULE_0__[\"loadHeaderFooter\"])();\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/loadHeaderFooter.js":
+/*!*********************************!*\
+  !*** ./src/loadHeaderFooter.js ***!
+  \*********************************/
+/*! exports provided: loadHeaderFooter */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"loadHeaderFooter\", function() { return loadHeaderFooter; });\nvar cartCount = function cartCount() {\n  if (localStorage.orderList) {\n    var number = localStorage.orderList.split(',');\n    document.getElementById('cart-number').innerText = number.length;\n    console.log(number.length);\n  }\n};\n\nvar loadHeaderFooter = function loadHeaderFooter() {\n  $('header').load('/pages/header.html');\n  $('footer').load('/pages/footer.html');\n  setTimeout(function () {\n    cartCount();\n  }, 150);\n};\n\n\n\n//# sourceURL=webpack:///./src/loadHeaderFooter.js?");
 
 /***/ })
 
