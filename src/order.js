@@ -13,7 +13,7 @@ if (!localStorage.orderList){ //Si le Panier est vide
     document.getElementsByClassName('panier')[0].innerHTML = "<span class='cart-empty'>Panier Vide</span>";
 
 }else{
-    let cart = localStorage.orderList.split(",");
+    let cart = localStorage.orderList.split(","); //Récupère la liste des articles de la commande
     document.getElementById('clear-cart').addEventListener('click', function(event){
         if (confirm("Vider le panier ?")){
             delete localStorage.orderList;
@@ -22,8 +22,8 @@ if (!localStorage.orderList){ //Si le Panier est vide
     });
     calculSum();
     for (let product of cart){
-        let ids = product.split("::");
-        myproduct.push(ids[1]);
+        let ids = product.split("::"); //Split les données pour récupérer les données : catégories, id et personnalisation du produit
+        myproduct.push(ids[1]); //Liste des ID qui vont être envoyer dans le POST
         let item = getData('http://localhost:3000/api/' + ids[0] + '/' + ids[1]).then(res => showOrder(res, ids[0], ids[1], ids[2]));
     }
 }
@@ -45,16 +45,14 @@ function submitOrder(){
                                     document.getElementById('inputEmail').value, 
                                     document.getElementById('inputAddress').value, 
                                     document.getElementById('inputCity').value);
-            let productId = window.location.search.substr(4);
-            let valueToSend = {contact:client1, products:myproduct};
+            let valueToSend = {contact:client1, products:myproduct}; //Contient la class Contact et la liste des ID des produits commandé
             postOrder(valueToSend);
         })
     }
 }
     
-
+//Affiche le tableau des produits présent dans la commande
 function showOrder(orderList, cat, id, personnalisation){
-    //console.log(orderList);
     let table = document.getElementById('panier__list-items--table');
     html +=  "<tr>" +
                     "<td><a href='product.html?id=" + id + "&cat="+ cat +"''>" + orderList.name + "</a></td>" +
@@ -64,6 +62,7 @@ function showOrder(orderList, cat, id, personnalisation){
     table.innerHTML = html;
 }
 
+//Calcul la somme total des produits présent dans la commande, return le prix
 function calculSum(){
     setTimeout (function(){
         let test = document.getElementsByClassName('price');
@@ -80,6 +79,7 @@ function calculSum(){
     }, 600);
 }
 
+//Envoie du formulaire et de la commande
 function postOrder(value){
     var request = new XMLHttpRequest();
     request.open("POST", "http://localhost:3000/api/teddies/order");

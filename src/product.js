@@ -28,6 +28,7 @@ document.getElementById('btn-addToOrder').addEventListener('click', function(eve
     localStorage.setItem('recentAddCart', recentAddCart.name + "&" + recentAddCart.img);
     window.location.href = "categorie.html?" + ids.categorie;
 })
+
 let showProductInfos = (data) => {
     let productImage = document.getElementById('product-infos__image');
     let productDetails = document.getElementById('product-infos__details');

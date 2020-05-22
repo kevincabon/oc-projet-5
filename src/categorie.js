@@ -1,6 +1,5 @@
 import { getData } from './import/getDb';
 import { loadHeaderFooter } from './include/loadHeaderFooter';
-import { getCategorie } from './import/getIds';
 
 loadHeaderFooter();
 showRecentAddCart();
