@@ -1,6 +1,7 @@
 import { getData } from './import/getDb';
 import { getIds } from './import/getIds';
 import { loadHeaderFooter } from './include/loadHeaderFooter';
+import { cartCount } from './include/loadHeaderFooter';
 
 loadHeaderFooter();
 
@@ -16,15 +17,18 @@ if (ids.categorie != "teddies"){
     document.getElementById('btn-addToOrder').innerText = 'Produit Non Dispo';
 }
 
-document.getElementById('addToOrder').addEventListener('click', function(event){
+document.getElementById('btn-addToOrder').addEventListener('click', function(event){
     //event.preventDefault();
     if(localStorage.getItem('orderList')){
         orderArray = localStorage.getItem('orderList').split(',');
     }
     orderArray.push(ids.categorie+"::"+ids.product_id+"::"+document.getElementById('personalisation').value);
     localStorage.setItem('orderList', orderArray);
-    console.log(localStorage.getItem('orderList'));
-    console.log(orderArray);
+    document.getElementById('sucess-add-cart').innerHTML = "Ajouté au panier ! <br> <a href='order.html'><button class='btn btn-success btn-cart'>Voir mon panier</button></a>";
+    $('#sucess-add-cart').fadeIn(350);
+    cartCount();
+    // console.log(localStorage.getItem('orderList'));
+    // console.log(orderArray);
 })
 
 let showProductInfos = (data) => {

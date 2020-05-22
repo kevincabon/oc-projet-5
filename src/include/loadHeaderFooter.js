@@ -16,3 +16,4 @@ let loadHeaderFooter = () => {
 }
 
 export { loadHeaderFooter };
+export { cartCount };
