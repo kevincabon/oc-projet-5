@@ -18,7 +18,7 @@ let productList = (products) => {
     for (let article of products){
         html +=     "<figure>" + 
                         "<a href='product.html?id=" + article._id + "&cat="+ categorie +"'>" + 
-                            "<img src='"+article.imageUrl+"''>" +
+                            "<img src='"+article.imageUrl+"' class='shadow'>" +
                             "<figcaption>" + 
                             article.name + 
                             "</figcaption>" + 
