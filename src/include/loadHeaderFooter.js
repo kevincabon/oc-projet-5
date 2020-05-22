@@ -12,7 +12,7 @@ let loadHeaderFooter = () => {
 
     setTimeout(function(){
         cartCount()
-    }, 150)
+    }, 600)
 }
 
 export { loadHeaderFooter };
