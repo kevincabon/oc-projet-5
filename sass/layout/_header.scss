@@ -13,14 +13,8 @@
                 color: black;
                 font-size: 1.4rem;
                 .cart-number{
-                    color: black;
-                    font-size: 1rem;
-                    background-color: darken($color: $bg-color, $amount: 30);
-                    padding: 5px;
-                    border-radius: 50%;
-                    vertical-align: top;
-                    position: relative;
-                    left: -10px;
+                    font-size: 1.3rem;
+                    padding: 0 .3rem;
                 }
             }
             a:hover{

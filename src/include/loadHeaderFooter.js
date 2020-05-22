@@ -2,7 +2,6 @@ let cartCount = () => {
     if (localStorage.orderList){
         let number = localStorage.orderList.split(',');
         document.getElementById('cart-number').innerText = number.length;
-        console.log(number.length);
     }
 }
 
@@ -12,7 +11,7 @@ let loadHeaderFooter = () => {
 
     setTimeout(function(){
         cartCount()
-    }, 600)
+    }, 400)
 }
 
 export { loadHeaderFooter };

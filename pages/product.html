@@ -9,15 +9,17 @@
     <script defer src="/produit.bundle.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
 
         <header class="header"></header>
         
         <article class="row product-infos">
-            <section id="container" class="product-infos__data col-8"></section>
-            <section class="col-4">
+            <section id="product-infos__image" class="product-infos product-infos__image col-md-4"></section>
+            <section id="product-infos__details" class="product-infos product-infos__details col-md-5"></section>
+            <section id="product-infos__price" class="product-infos product-infos__price col-md-3">
+                <p>Prix : <span id="price"></span></p>
                 <button class="btn btn-secondary" id="btn-addToOrder"><i class="fas fa-cart-plus"></i> Ajouter au Panier</button>
-                <p id="price"></p>
+                <br><br>
                 <div id="sucess-add-cart"></div>
             </section>
         </article>

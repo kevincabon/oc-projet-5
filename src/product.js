@@ -32,7 +32,8 @@ document.getElementById('btn-addToOrder').addEventListener('click', function(eve
 })
 
 let showProductInfos = (data) => {
-    let container = document.getElementById('container');
+    let productImage = document.getElementById('product-infos__image');
+    let productDetails = document.getElementById('product-infos__details');
     let personalisation = [];
     if (data.varnish){
         var personalisationData = data.varnish;
@@ -45,9 +46,9 @@ let showProductInfos = (data) => {
         personalisation += "<option>" + personalisationData[i] + "</option>";
     }
     let html =  "<h2>" + data.name + "</h2>" +
-                "<img src='"+data.imageUrl+"' class='col-12'>" +
                 "<p>" + data.description + "</p>" +
                 "Personnalisation : <select id='personalisation'>" + personalisation + "</select>";
-    container.innerHTML = html;
+    productImage.innerHTML = "<img src='"+data.imageUrl+"' class='col-12'>";
+    productDetails.innerHTML = html;
     document.getElementById('price').innerHTML = data.price + " $";
 }

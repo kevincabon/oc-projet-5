@@ -1,5 +1,8 @@
 .product-infos{
     margin-top: 2rem;
+    &__price{
+        text-align: center;
+    }
 }
 .btn-cart{
     padding: 10px 30px;
@@ -8,5 +11,5 @@
 #sucess-add-cart{
     display: none;
     font-weight: 800;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
