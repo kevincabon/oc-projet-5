@@ -1,11 +1,13 @@
 import { getData } from './getDb';
 import { showProductInfos } from './productInfos';
 import { getIds } from './getIds';
-import { cartCount } from './cartCount';
+import { loadHeaderFooter } from './loadHeaderFooter';
+
+loadHeaderFooter();
 
 let ids = getIds();
 let orderArray = [];
-cartCount();
+
 getData('http://localhost:3000/api/' + ids.categorie + '/' + ids.product_id).then(res => showProductInfos(res));
 
 //console.log(ids.pr<oduct_id)

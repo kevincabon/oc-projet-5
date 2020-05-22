@@ -1,11 +1,11 @@
 import { getData } from './getDb';
-import { cartCount } from './cartCount';
+import { loadHeaderFooter } from './loadHeaderFooter';
 import { Contact } from './contact';
 
-cartCount();
+loadHeaderFooter();
+
 let cart = '';
 let html = '';
-let prices = '';
 let myproduct = [];
 if (!localStorage.orderList){
     document.getElementsByClassName('panier')[0].innerHTML = "<span class='cart-empty'>Panier Vide</span>";
@@ -53,6 +53,7 @@ function calculSum(){
         return prices;
     }, 600);
 }
+
 calculSum();
 
 

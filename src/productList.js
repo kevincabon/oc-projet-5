@@ -1,6 +1,8 @@
 import { getData } from './getDb';
-import { cartCount } from './cartCount';
+import { loadHeaderFooter } from './loadHeaderFooter';
 import { getCategorie } from './getIds';
+
+loadHeaderFooter();
 
 let categorie = window.location.search.replace("?", "");
 
@@ -24,8 +26,4 @@ let productList = (products) => {
     container.innerHTML = html;
 }
 
-
-
-
-cartCount();
 getData('http://localhost:3000/api/' + categorie).then(res => productList(res));
