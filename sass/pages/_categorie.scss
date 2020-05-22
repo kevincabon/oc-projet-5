@@ -32,3 +32,26 @@
         }
     }
 }
+.recent-add-cart{
+    width: 600px;
+    margin: auto;
+    border: 1px solid black;
+    align-items: center;
+    img{
+        width: 80px;
+    }
+    td{
+        padding: 1rem;
+    }
+    &__name, &__button{
+        text-align: center;
+        color: darkgreen;
+        span{
+            font-weight: 800;
+            color: black;
+        }
+    }
+}
+.btn-cart{
+    padding: 10px 30px;
+}

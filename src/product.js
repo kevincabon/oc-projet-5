@@ -7,8 +7,9 @@ loadHeaderFooter();
 
 let ids = getIds();
 let orderArray = [];
+let recentAddCart = '';
 
-getData('http://localhost:3000/api/' + ids.categorie + '/' + ids.product_id).then(res => showProductInfos(res));
+getData('http://localhost:3000/api/' + ids.categorie + '/' + ids.product_id).then(res => recentAddCart = showProductInfos(res));
 
 //delete localStorage.orderList;
 
@@ -24,13 +25,9 @@ document.getElementById('btn-addToOrder').addEventListener('click', function(eve
     }
     orderArray.push(ids.categorie+"::"+ids.product_id+"::"+document.getElementById('personalisation').value);
     localStorage.setItem('orderList', orderArray);
-    document.getElementById('sucess-add-cart').innerHTML = "Ajouté au panier ! <br> <a href='order.html'><button class='btn btn-success btn-cart'>Voir mon panier</button></a>";
-    $('#sucess-add-cart').fadeIn(350);
-    cartCount();
-    // console.log(localStorage.getItem('orderList'));
-    // console.log(orderArray);
+    localStorage.setItem('recentAddCart', recentAddCart.name + "&" + recentAddCart.img);
+    window.location.href = "categorie.html?" + ids.categorie;
 })
-
 let showProductInfos = (data) => {
     let productImage = document.getElementById('product-infos__image');
     let productDetails = document.getElementById('product-infos__details');
@@ -51,4 +48,5 @@ let showProductInfos = (data) => {
     productImage.innerHTML = "<img src='"+data.imageUrl+"' class='col-12'>";
     productDetails.innerHTML = html;
     document.getElementById('price').innerHTML = data.price + " $";
+    return {'name':data.name, 'img':data.imageUrl};
 }
