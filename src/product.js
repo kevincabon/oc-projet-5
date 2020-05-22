@@ -9,8 +9,12 @@ let orderArray = [];
 
 getData('http://localhost:3000/api/' + ids.categorie + '/' + ids.product_id).then(res => showProductInfos(res));
 
-//console.log(ids.pr<oduct_id)
 //delete localStorage.orderList;
+
+if (ids.categorie != "teddies"){
+    document.getElementById('btn-addToOrder').setAttribute('disabled', '');
+    document.getElementById('btn-addToOrder').innerText = 'Produit Non Dispo';
+}
 
 document.getElementById('addToOrder').addEventListener('click', function(event){
     //event.preventDefault();
@@ -22,9 +26,6 @@ document.getElementById('addToOrder').addEventListener('click', function(event){
     console.log(localStorage.getItem('orderList'));
     console.log(orderArray);
 })
-console.log(localStorage.getItem('orderList'));
-
-
 
 let showProductInfos = (data) => {
     let container = document.getElementById('container');

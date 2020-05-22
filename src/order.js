@@ -7,6 +7,8 @@ submitOrder();
 let html = '';
 let myproduct = [];
 
+//delete localStorage.orderRecap;
+
 if (!localStorage.orderList){ //Si le Panier est vide
     document.getElementsByClassName('panier')[0].innerHTML = "<span class='cart-empty'>Panier Vide</span>";
 
