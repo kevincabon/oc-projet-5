@@ -1,7 +1,41 @@
 .order-recap{
-    margin-top: 2rem;
-    text-align: center;
+    h2{
+        margin-top: 2rem;
+        text-align: center;
+        @include tablet{
+            display: flex;
+            flex-direction: column;
+            font-size: 1.6rem;
+        }
+    }
     p{
-        margin: 2rem 0;
+        margin: 4rem auto;
+        font-size: 1.4rem;   
+        text-align: center; 
+        @include tablet{
+            font-size: 1.2rem;
+        }
+    }
+    table{
+        width: 80%;
+        margin: 1rem auto;
+        font-size: 1.2rem;
+        tr{
+            @include tablet{
+                display: flex;
+                text-align: center;
+                flex-direction: column;
+                margin-top: 1rem;
+            }
+            td{
+                border: 1px solid black;
+                font-weight: 800;
+                padding: 1rem;
+                background-color: darken($color: $bg-color-darken, $amount: 15);
+            }
+            .table-res{
+                background-color: darken($color: $bg-color-darken, $amount: 5);
+            }
+        }
     }
 }

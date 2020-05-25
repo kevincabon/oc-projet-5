@@ -15,9 +15,28 @@
 
         <article>
             <section class="order-recap">
-                <h2>Merci de votre commande !</h2>
-                <p>Numéro de commande : <span id="order-id"></span></p>
-                <p>Montant de la commande : <span id="order-total-price"></span> $</p>
+                <h2><span id="userName"></span> Merci de votre commande !</h2>
+                <p> Résumé de votre commande : <br><br>
+                    Envoyé sur votre email : <span id="order-email" class="text-danger"></span>
+                </p>
+                <table>
+                    <tr>
+                        <td>Numéro de commande</td>
+                        <td id="order-id" class="table-res"></td>
+                    </tr>
+                    <tr>
+                        <td>Nom, Prénom</td>
+                        <td id="order-userName" class="table-res"></td>
+                    </tr>
+                    <tr>
+                        <td>Adresse</td>
+                        <td id="order-address" class="table-res"></td>
+                    </tr>
+                    <tr>
+                        <td>Montant de la commande</td>
+                        <td id="order-total-price" class="table-res"></td>
+                    </tr>
+                </table>
             </section>
         </article>
 

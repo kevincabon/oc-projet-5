@@ -1,2 +1,4 @@
 $fa-font-path: "../webfonts";
 $bg-color: #F1E6EF;
+
+$bg-color-darken: darken($color: $bg-color, $amount: 10);
