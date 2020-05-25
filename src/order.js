@@ -57,7 +57,7 @@ function showOrder(orderList, cat, id, personnalisation){
     html +=  "<tr>" +
                     "<td><a href='product.html?id=" + id + "&cat="+ cat +"''>" + orderList.name + "</a></td>" +
                     "<td>" + personnalisation + "</td>" +
-                    "<td ><span class='price'>" + orderList.price + "<span></td>" +
+                    "<td ><span class='price'>" + (orderList.price / 100).toFixed(2) + "<span>€</td>" +
                 "</tr>";
     table.innerHTML = html;
 }
@@ -65,17 +65,16 @@ function showOrder(orderList, cat, id, personnalisation){
 //Calcul la somme total des produits présent dans la commande, return le prix
 function calculSum(){
     setTimeout (function(){
-        let test = document.getElementsByClassName('price');
-        var prices = 0;
-        for (var i in test){
-            if (test[i].textContent){
-                prices += parseInt(test[i].textContent);
+        let itemPrice = document.getElementsByClassName('price');
+        let totalPrices = parseFloat(0);
+        for (var i in itemPrice){
+            if (itemPrice[i].textContent){
+                totalPrices += parseFloat(itemPrice[i].textContent);
             }
         }
-        console.log(prices);
-        document.getElementById('total').innerHTML = "TOTAL : " + prices + "$";
+        document.getElementById('total').innerHTML = "TOTAL : " + totalPrices.toFixed(2)+ "€";
         console.log(myproduct);
-        return prices;
+        return totalPrices;
     }, 600);
 }
 

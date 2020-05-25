@@ -14,7 +14,8 @@
         <header class="header"></header>
 
         <article class="panier">
-            <h1>Panier</h1>
+            <h1>Votre panier !</h1>
+            <button id="clear-cart" class="btn btn-danger btn-sm">Vider le panier</button>
             <section class="panier__list-items" id="panier__list-items">
                 <table class="table table-striped">
                     <thead>
@@ -27,14 +28,14 @@
                     <tbody class="panier__list-items--table" id="panier__list-items--table"></tbody>
                     <tfoot>
                         <tr>
-                            <th id="total"></th>
+                            <th id="total" colspan="3"></th>
                         </tr>
                     </tfoot>
                 </table>
-                <button id="clear-cart" class="btn btn-danger">Vider le panier</button>
             </section>
 
             <section class="panier__form" id="panier__form">
+                <hr>
                 <h2>Remplir le formulaire pour valider votre commande</h2>
                 <form action="" class="col-lg-8 mx-auto" id="order-form">
                     <div class="form-row">
@@ -61,7 +62,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary" id="submit-form">Passer Commande</button>
                 </form>
-
+                <hr>
             </section>
         </article>
 

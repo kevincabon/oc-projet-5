@@ -48,6 +48,7 @@ let showProductInfos = (data) => {
                 "Personnalisation : <select id='personalisation'>" + personalisation + "</select>";
     productImage.innerHTML = "<img src='"+data.imageUrl+"' class='col-12'>";
     productDetails.innerHTML = html;
-    document.getElementById('price').innerHTML = data.price + " $";
+    let price = (data.price) / 100;
+    document.getElementById('price').innerHTML = price.toFixed(2) + "€";
     return {'name':data.name, 'img':data.imageUrl};
 }

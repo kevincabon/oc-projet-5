@@ -13,9 +13,13 @@
         flex-wrap: wrap;
         justify-content: space-around;
         margin: auto;
+        width: 95%;
         figure{
             border: 1px solid grey;
             height: 290px;
+            @include tablet{
+                height: 165px;
+            }
             img{
                 height: 100%;
             }
@@ -35,14 +39,25 @@
 }
 .recent-add-cart{
     width: 600px;
+    @include tablet{
+        width: 90%
+    }
     margin: auto;
-    border: 1px solid black;
+    
     align-items: center;
     img{
         width: 80px;
     }
+    tr{
+        align-items: center;
+        border: 1px solid black;
+    }
     td{
         padding: 1rem;
+        @include tablet{
+            display: block;
+            text-align: center;
+        }
     }
     &__name, &__button{
         text-align: center;
@@ -50,6 +65,8 @@
         span{
             font-weight: 800;
             color: black;
+            @include tablet{
+            }
         }
     }
 }
