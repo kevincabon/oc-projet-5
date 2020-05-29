@@ -93,4 +93,7 @@ function postOrder(value){
     request.send(JSON.stringify(value));
 }
 
-
+document.getElementById('order-button').addEventListener("click", function(){
+    document.getElementById('panier__form').style.display = "block";
+    document.getElementById('order-button').style.display = "none";
+})

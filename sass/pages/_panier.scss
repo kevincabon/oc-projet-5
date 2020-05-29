@@ -5,9 +5,12 @@
         font-size: 1.9rem;
     }
     &__form{
+        display: none;
         margin: 3rem 0;
         h2{
             text-align: center;
+            font-size: 1.6rem;
+            margin: 2rem 0;
         }
     }
     .cart-empty{
@@ -19,10 +22,15 @@
         text-align: center;
         font-size: 1.6rem;
     }
-    &__form{
-        h2{
-            font-size: 1.6rem;
-            margin: 2rem 0;
+    &__list-items{
+        text-align: center;
+        table{
+            text-align: left;
+        }
+        button{
+            font-weight: 800;
+            text-transform: uppercase;
+            transform: scaleX(1.2);
         }
     }
 }
