@@ -18,5 +18,5 @@ if (localStorage.orderRecap){
     document.getElementById('order-total-price').innerHTML = (price / 100).toFixed(2) + "€";
     delete localStorage.orderList;
 }else{
-    window.location.href = 'order.html';
+    window.location.href = 'cart.html';
 }

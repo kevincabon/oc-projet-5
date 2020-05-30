@@ -96,4 +96,5 @@ function postOrder(value){
 document.getElementById('order-button').addEventListener("click", function(){
     document.getElementById('panier__form').style.display = "block";
     document.getElementById('order-button').style.display = "none";
+    document.getElementById('panier__form').style.animation = "showFrom 450ms ease-in-out"
 })

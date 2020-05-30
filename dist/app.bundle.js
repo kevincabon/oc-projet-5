@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/include/loadHeaderFooter.js":
+/*!*****************************************!*\
+  !*** ./src/include/loadHeaderFooter.js ***!
+  \*****************************************/
+/*! exports provided: loadHeaderFooter, cartCount */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"loadHeaderFooter\", function() { return loadHeaderFooter; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"cartCount\", function() { return cartCount; });\nvar cartCount = function cartCount() {\n  if (localStorage.orderList) {\n    var number = localStorage.orderList.split(',');\n    document.getElementById('cart-number').innerText = number.length;\n  }\n};\n\nvar loadHeaderFooter = function loadHeaderFooter() {\n  $('header').load('/pages/header.html');\n  $('footer').load('/pages/footer.html');\n  setTimeout(function () {\n    cartCount();\n  }, 400);\n};\n\n\n\n\n//# sourceURL=webpack:///./src/include/loadHeaderFooter.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -94,19 +106,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _loadHeaderFooter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loadHeaderFooter */ \"./src/loadHeaderFooter.js\");\n\nObject(_loadHeaderFooter__WEBPACK_IMPORTED_MODULE_0__[\"loadHeaderFooter\"])();\n\n//# sourceURL=webpack:///./src/index.js?");
-
-/***/ }),
-
-/***/ "./src/loadHeaderFooter.js":
-/*!*********************************!*\
-  !*** ./src/loadHeaderFooter.js ***!
-  \*********************************/
-/*! exports provided: loadHeaderFooter */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"loadHeaderFooter\", function() { return loadHeaderFooter; });\nvar cartCount = function cartCount() {\n  if (localStorage.orderList) {\n    var number = localStorage.orderList.split(',');\n    document.getElementById('cart-number').innerText = number.length;\n    console.log(number.length);\n  }\n};\n\nvar loadHeaderFooter = function loadHeaderFooter() {\n  $('header').load('/pages/header.html');\n  $('footer').load('/pages/footer.html');\n  setTimeout(function () {\n    cartCount();\n  }, 150);\n};\n\n\n\n//# sourceURL=webpack:///./src/loadHeaderFooter.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _include_loadHeaderFooter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./include/loadHeaderFooter */ \"./src/include/loadHeaderFooter.js\");\n\nObject(_include_loadHeaderFooter__WEBPACK_IMPORTED_MODULE_0__[\"loadHeaderFooter\"])();\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 

@@ -5,7 +5,7 @@ let getIds = () => {
         let id = part.split("=");
         value.push(id[1]);
     }
-    return {"categorie": value[1], "product_id": value[0]};
+    return {"category": value[1], "product_id": value[0]};
 }
 
 export { getIds };

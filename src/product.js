@@ -9,11 +9,11 @@ let ids = getIds();
 let orderArray = [];
 let recentAddCart = '';
 
-getData('http://localhost:3000/api/' + ids.categorie + '/' + ids.product_id).then(res => recentAddCart = showProductInfos(res));
+getData('http://localhost:3000/api/' + ids.category + '/' + ids.product_id).then(res => recentAddCart = showProductInfos(res));
 
 //delete localStorage.orderList;
 
-if (ids.categorie != "teddies"){
+if (ids.category != "teddies"){
     document.getElementById('btn-addToOrder').setAttribute('disabled', '');
     document.getElementById('btn-addToOrder').innerText = 'Produit Non Dispo';
 }
@@ -23,10 +23,10 @@ document.getElementById('btn-addToOrder').addEventListener('click', function(eve
     if(localStorage.getItem('orderList')){
         orderArray = localStorage.getItem('orderList').split(',');
     }
-    orderArray.push(ids.categorie+"::"+ids.product_id+"::"+document.getElementById('personalisation').value);
+    orderArray.push(ids.category+"::"+ids.product_id+"::"+document.getElementById('personalisation').value);
     localStorage.setItem('orderList', orderArray);
     localStorage.setItem('recentAddCart', recentAddCart.name + "&" + recentAddCart.img);
-    window.location.href = "categorie.html?" + ids.categorie;
+    window.location.href = "category.html?" + ids.category;
 })
 
 let showProductInfos = (data) => {

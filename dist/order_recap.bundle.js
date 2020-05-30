@@ -86,15 +86,15 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/loadHeaderFooter.js":
-/*!*********************************!*\
-  !*** ./src/loadHeaderFooter.js ***!
-  \*********************************/
-/*! exports provided: loadHeaderFooter */
+/***/ "./src/include/loadHeaderFooter.js":
+/*!*****************************************!*\
+  !*** ./src/include/loadHeaderFooter.js ***!
+  \*****************************************/
+/*! exports provided: loadHeaderFooter, cartCount */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"loadHeaderFooter\", function() { return loadHeaderFooter; });\nvar cartCount = function cartCount() {\n  if (localStorage.orderList) {\n    var number = localStorage.orderList.split(',');\n    document.getElementById('cart-number').innerText = number.length;\n    console.log(number.length);\n  }\n};\n\nvar loadHeaderFooter = function loadHeaderFooter() {\n  $('header').load('/pages/header.html');\n  $('footer').load('/pages/footer.html');\n  setTimeout(function () {\n    cartCount();\n  }, 150);\n};\n\n\n\n//# sourceURL=webpack:///./src/loadHeaderFooter.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"loadHeaderFooter\", function() { return loadHeaderFooter; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"cartCount\", function() { return cartCount; });\nvar cartCount = function cartCount() {\n  if (localStorage.orderList) {\n    var number = localStorage.orderList.split(',');\n    document.getElementById('cart-number').innerText = number.length;\n  }\n};\n\nvar loadHeaderFooter = function loadHeaderFooter() {\n  $('header').load('/pages/header.html');\n  $('footer').load('/pages/footer.html');\n  setTimeout(function () {\n    cartCount();\n  }, 400);\n};\n\n\n\n\n//# sourceURL=webpack:///./src/include/loadHeaderFooter.js?");
 
 /***/ }),
 
@@ -106,7 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _loadHeaderFooter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loadHeaderFooter */ \"./src/loadHeaderFooter.js\");\n\nObject(_loadHeaderFooter__WEBPACK_IMPORTED_MODULE_0__[\"loadHeaderFooter\"])();\nconsole.log(JSON.parse(localStorage.orderRecap));\nvar content = JSON.parse(localStorage.orderRecap);\ndocument.getElementById('order-recap').innerHTML = content.contact.email;\n\n//# sourceURL=webpack:///./src/order-recap.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _include_loadHeaderFooter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./include/loadHeaderFooter */ \"./src/include/loadHeaderFooter.js\");\n\nvar price = parseFloat(0);\nObject(_include_loadHeaderFooter__WEBPACK_IMPORTED_MODULE_0__[\"loadHeaderFooter\"])();\n\nif (localStorage.orderRecap) {\n  var content = JSON.parse(localStorage.orderRecap);\n  console.log(content);\n\n  for (var i in content.products) {\n    price += content.products[i].price;\n  }\n\n  document.getElementById('userName').innerHTML = content.contact.firstName + \",\";\n  document.getElementById('order-email').innerHTML = content.contact.email;\n  document.getElementById('order-id').innerHTML = content.orderId;\n  document.getElementById('order-userName').innerHTML = content.contact.lastName + \" \" + content.contact.firstName;\n  document.getElementById('order-address').innerHTML = content.contact.address + \", \" + content.contact.city;\n  document.getElementById('order-total-price').innerHTML = (price / 100).toFixed(2) + \"€\";\n  delete localStorage.orderList;\n} else {\n  window.location.href = 'order.html';\n}\n\n//# sourceURL=webpack:///./src/order-recap.js?");
 
 /***/ })
 

@@ -4,10 +4,15 @@
 .items-list{
     text-align: center;
     &__title{
-        margin: 2rem 0;
+        margin: 2rem auto;
+        font-size: 1.8rem;
+        @include mobile{
+            font-size: 1.5rem;
+        }
     }
     &__list{
         width: 90%;
+        padding: 0;
         margin: auto;
         display: flex;
         flex-wrap: wrap;
@@ -15,14 +20,17 @@
         li{
             position: relative;
             list-style-type: none;
-            margin: 1rem 0;
+            margin: 1rem 1rem;
 
             a{
                 img{
                     border: 2px solid black;
                     padding: 1rem;
                     transition: all 200ms ease-in-out;
-                    width: 330px;
+                    width: 250px;
+                    @include mobile{
+                        width: 80%;
+                    }
                     &:hover{
                         transform: scale(1.05);
                         opacity: 0.85;
