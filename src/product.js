@@ -9,7 +9,12 @@ let ids = getIds();
 let orderArray = [];
 let recentAddCart = '';
 
-getData('http://localhost:3000/api/' + ids.category + '/' + ids.product_id).then(res => recentAddCart = showProductInfos(res));
+getData('http://localhost:3000/api/' + ids.category + '/' + ids.product_id)
+    .then(res => recentAddCart = showProductInfos(res))
+    .catch(error => {
+        document.getElementsByTagName('article')[0].innerHTML = "<h2 class='text-center'>Erreur du chargement des données ...</h2>";
+        console.error(error);
+    });
 
 //delete localStorage.orderList;
 
