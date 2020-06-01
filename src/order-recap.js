@@ -4,6 +4,7 @@ let price = parseFloat(0);
 
 loadHeaderFooter();
 
+//Charge le information de la commande stocké dans orderRecap
 if (localStorage.orderRecap){
     let content = JSON.parse(localStorage.orderRecap);
     console.log(content);

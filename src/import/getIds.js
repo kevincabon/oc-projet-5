@@ -1,3 +1,4 @@
+// Récupère l'id du produit et sa catégorie dans l'url de la page
 let getIds = () => {
     let object = window.location.search.substr(1).split('&');
     let value = [];

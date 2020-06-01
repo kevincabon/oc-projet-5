@@ -7,8 +7,6 @@ submitOrder();
 let html = '';
 let myproduct = [];
 
-//delete localStorage.orderRecap;
-
 if (!localStorage.orderList){ //Si le Panier est vide
     document.getElementsByClassName('panier')[0].innerHTML = "<span class='cart-empty'>Panier Vide</span>";
 
@@ -78,7 +76,7 @@ function calculSum(){
     }, 600);
 }
 
-//Envoie du formulaire et de la commande
+//Envoie du formulaire et de la commande sur le serveur
 function postOrder(value){
     var request = new XMLHttpRequest();
     request.open("POST", "http://localhost:3000/api/teddies/order");

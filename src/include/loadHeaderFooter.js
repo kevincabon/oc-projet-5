@@ -1,3 +1,4 @@
+//Affiche le nombre d'article présent dans le panier
 let cartCount = () => {
     if (localStorage.orderList){
         let number = localStorage.orderList.split(',');
