@@ -1,19 +1,14 @@
 import { Error } from "mongoose";
 
+// Récupère les données dans la base de donnée
 let getData = (url) => {
-    let request = new XMLHttpRequest();
-
     return new Promise((resolve, reject) => {
-        request.onreadystatechange = function() {
-            if (this.readyState == XMLHttpRequest.DONE && this.status == 200){
-                //console.log(response);
-                resolve(JSON.parse(this.responseText));
-                //reject(console.error('Error'));
-            }
-        }
-        request.open('GET', url);
-        request.send();
-    })
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.onload = () => resolve(JSON.parse(xhr.responseText)); // Retourne le résultat
+        xhr.onerror = () => reject("Error getData"); // Retourne une erreur si un problème est survenu
+        xhr.send();
+      });
 }
 
 export { getData };

@@ -9,26 +9,32 @@ let ids = getIds();
 let orderArray = [];
 let recentAddCart = '';
 
-getData('http://localhost:3000/api/' + ids.category + '/' + ids.product_id).then(res => recentAddCart = showProductInfos(res));
+// Récupère le produit selectionné dans la base de donnée
+getData('http://localhost:3000/api/' + ids.category + '/' + ids.product_id)
+    .then(res => recentAddCart = showProductInfos(res))
+    .catch(error => {
+        document.getElementsByTagName('article')[0].innerHTML = "<h2 class='text-center'>Erreur du chargement des données ...</h2>";
+        console.error(error);
+    });
 
-//delete localStorage.orderList;
-
+// Si la catégorie n'est pas teddies, le bouton d'ajout dans le panier est désactivé, car les autres catégories ne sont pas disponible pour le moment
 if (ids.category != "teddies"){
     document.getElementById('btn-addToOrder').setAttribute('disabled', '');
     document.getElementById('btn-addToOrder').innerText = 'Produit Non Dispo';
 }
 
+// Ajoute un produit dans le panier quand on clic sur le bouton 
 document.getElementById('btn-addToOrder').addEventListener('click', function(event){
-    //event.preventDefault();
-    if(localStorage.getItem('orderList')){
+    if(localStorage.getItem('orderList')){ //Si aucun élément n'est présent dans la panier, on crée la variable
         orderArray = localStorage.getItem('orderList').split(',');
     }
-    orderArray.push(ids.category+"::"+ids.product_id+"::"+document.getElementById('personalisation').value);
+    orderArray.push(ids.category+"::"+ids.product_id+"::"+document.getElementById('personalisation').value); // Sinon on va ajouter à la suite les produits
     localStorage.setItem('orderList', orderArray);
-    localStorage.setItem('recentAddCart', recentAddCart.name + "&" + recentAddCart.img);
+    localStorage.setItem('recentAddCart', recentAddCart.name + "&" + recentAddCart.img); // Crée la variable qui confirme l'ajout récent d'un élément dans la panier
     window.location.href = "category.html?" + ids.category;
 })
 
+//Affiche les informations sur le produit
 let showProductInfos = (data) => {
     let productImage = document.getElementById('product-infos__image');
     let productDetails = document.getElementById('product-infos__details');
